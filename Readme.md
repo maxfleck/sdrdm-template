@@ -35,17 +35,19 @@ In the following an [example](https://github.com/JR-1991/sdrdm-template/tree/mai
 
 You can experiment and use this [example](https://github.com/JR-1991/sdrdm-template/tree/main/specifications) repository right away to get familiar with teh concept. This repository includes an [action](https://github.com/JR-1991/sdrdm-template/blob/main/.github/workflows/generate_api.yaml) that is triggered whenever changes are pushed. Thus, when you introduce changes to the markdown document, these will directly be reflected onto the generated software. Follow these steps to start out:
 
-1. Fork this repository into your own profile. This will create an exact copy, but you have all rights to modify it without affecting the original.
+> **_NOTE:_**  For the GitHub action to work, you need to add a `LIB_NAME` secret to your repository ([more info](https://docs.github.com/actions/security-guides/encrypted-secrets)) to define the target name of the generated library. Otherwise you will run into an error.
 
-![](https://www.earthdatascience.org/images/earth-analytics/git-version-control/githubguides-bootcamp-fork.png)
+1. Fork this repository into your own profile. This will create an exact copy, but you have all rights to modify it without affecting the original. 
+
+<img src="https://www.earthdatascience.org/images/earth-analytics/git-version-control/githubguides-bootcamp-fork.png" width="500" />
 
 2. Open the ```specifications/Example.md``` file and edit it according to the syntax. You can also press ```Preview``` to inspect the rendered Markdown.
-   
-![](https://docs.github.com/assets/cb-118903/images/help/repository/edit-file-edit-dropdown.png)
+
+<img src="https://docs.github.com/assets/cb-118903/images/help/repository/edit-file-edit-dropdown.png" width="500" />
 
 3. Commit changes to the ```main``` branch or create a new one from it. By creating a new branch you can safely work without affecting the original. Once your modifications are done, you can merge these into the ```main``` branch.
 
-![](https://docs.github.com/assets/cb-32137/images/help/repository/choose-commit-branch.png)
+<img src="https://docs.github.com/assets/cb-32137/images/help/repository/choose-commit-branch.png" width="500" />
 
 4. Watch your changes being reflected onto the API. You can also directly fetch this model using the [sdRDM](https://github.com/JR-1991/software-driven-rdm) library. For this, you can use the following example code that should run as is. 
 
