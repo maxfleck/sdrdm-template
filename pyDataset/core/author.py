@@ -9,8 +9,7 @@ from sdRDM.base.utils import forge_signature, IDGenerator
 
 
 class Author(sdRDM.DataModel):
-    """This is another object that represents the author of the dataset. Please note, that the options here contain all required fields but also custom ones. In this example, the ```Dataverse``` option specifies where each field should be mapped, when exported to a Dataverse format. Hence, these options allow you to link your dataset towards any other data model without writing code by yourself.
-    """
+    """This is another object that represents the author of the dataset. Please note, that the options here contain all required fields but also custom ones. In this example, the ```Dataverse``` option specifies where each field should be mapped, when exported to a Dataverse format. Hence, these options allow you to link your dataset towards any other data model without writing code by yourself."""
 
     name: str = Field(
         ...,
@@ -31,9 +30,9 @@ class Author(sdRDM.DataModel):
     )
 
     __repo__: Optional[str] = PrivateAttr(
-        default="git://github.com/JR-1991/sdrdm-template.git"
+        default="https://github.com/JR-1991/sdrdm-template.git"
     )
 
     __commit__: Optional[str] = PrivateAttr(
-        default="2e6c6d2488a46547b281b6243038ee0eb29c0b97"
+        default="86dcdebabb7632aad016bde76004aad804973134"
     )

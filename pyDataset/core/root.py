@@ -7,14 +7,12 @@ from pydantic import PrivateAttr
 from pydantic import Field
 from sdRDM.base.listplus import ListPlus
 from sdRDM.base.utils import forge_signature, IDGenerator
-
 from .author import Author
 from .parameter import Parameter
 
 
 class Root(sdRDM.DataModel):
-    """This is the root of the data model and contains all objects defined in this example. While its good practice to have a single root, you can define as many roots as you like. Furthermore, the name does not have to be ```Root``` and can be any other name.
-    """
+    """This is the root of the data model and contains all objects defined in this example. While its good practice to have a single root, you can define as many roots as you like. Furthermore, the name does not have to be ```Root``` and can be any other name."""
 
     description: str = Field(
         ...,
@@ -24,12 +22,6 @@ class Root(sdRDM.DataModel):
 
     title: str = Field(
         ..., description="Title of the work", dataverse="pyDaRUS.Citation.title"
-    )
-
-    subject: str = Field(
-        ...,
-        description="Subject of matter linked to the dataset",
-        dataverse="pyDaRUS.Citation.subject",
     )
 
     authors: List[Author] = Field(
@@ -47,12 +39,18 @@ class Root(sdRDM.DataModel):
         xml="@id",
     )
 
+    subject: List[str] = Field(
+        description="Subject of matter linked to the dataset",
+        dataverse="pyDaRUS.Citation.subject",
+        default_factory=ListPlus,
+    )
+
     __repo__: Optional[str] = PrivateAttr(
-        default="git://github.com/JR-1991/sdrdm-template.git"
+        default="https://github.com/JR-1991/sdrdm-template.git"
     )
 
     __commit__: Optional[str] = PrivateAttr(
-        default="2e6c6d2488a46547b281b6243038ee0eb29c0b97"
+        default="86dcdebabb7632aad016bde76004aad804973134"
     )
 
     def add_to_authors(
@@ -101,4 +99,7 @@ class Root(sdRDM.DataModel):
         if id is not None:
             params["id"] = id
         parameters = [Parameter(**params)]
-        self.parameters = self.parameters + parameters
+        self.parameters = self.parameters + parameter
+
+
+s
