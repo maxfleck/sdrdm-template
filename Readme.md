@@ -2,7 +2,7 @@
   Markdown Example for sdRDM
 </h2>
 
-<p align="center"> 
+<p align="center">
 This is an example of how to set up a data model using the Software-Driven Research Data Management (sdRDM) library which is based on abstract object models. Furthermore, the sdRDM library supports the conversion of data models defined in the Markdown format.</p>
 
 ### ✍️ Syntax
@@ -10,9 +10,10 @@ This is an example of how to set up a data model using the Software-Driven Resea
 Data models defined in the Markdown format follow these conventions:
 
 - **Modules** are denoted by a heading level 1 ```#```
-- **Objects** are started with a heading level 3 ```###``` 
-- Each object contains **fields** in bold as a list &rarr; ```- __name__```
-- **Required fields** are denoted with an asterix &rarr; ```- __name*__```
+- **Structural** headings are denoted by a heading level 2 ```##``` and can be used to structure your document &rarr GitHub supports table of contents for Markdown documents!
+- **Objects** are started with a heading level 3 ```###```
+- Each object contains **fields** as a list &rarr; ```- name```
+- **Required fields** are denoted in bold &rarr; ```- __name__```
 - Each field has **options** as a list of name to value mapping &rarr; ```- Type: string```
 
 ### ⚙️ Field options
@@ -35,21 +36,33 @@ In the following an [example](https://github.com/JR-1991/sdrdm-template/tree/mai
 
 You can experiment and use this [example](https://github.com/JR-1991/sdrdm-template/tree/main/specifications) repository right away to get familiar with teh concept. This repository includes an [action](https://github.com/JR-1991/sdrdm-template/blob/main/.github/workflows/generate_api.yaml) that is triggered whenever changes are pushed. Thus, when you introduce changes to the markdown document, these will directly be reflected onto the generated software. Follow these steps to start out:
 
-> **_NOTE:_**  For the GitHub action to work, you need to add a `LIB_NAME` secret to your repository ([more info](https://docs.github.com/actions/security-guides/encrypted-secrets)) to define the target name of the generated library. Otherwise you will run into an error.
+#### 👋 One thing, before you start
 
-1. Fork this repository into your own profile. This will create an exact copy, but you have all rights to modify it without affecting the original. 
+The sdRDM library is still under active development and will be released soon. For now, you can use the development version by installing it from GitHub using the following command:
 
-<img src="https://www.earthdatascience.org/images/earth-analytics/git-version-control/githubguides-bootcamp-fork.png" width="500" />
+```bash
+python3 -m pip install git+https://github.com/JR-1991/software-driven-rdm.git@linking-refactor
+```
+
+1. Fork this repository into your own profile. This will create an exact copy, but you have all rights to modify it without affecting the original.
+
+<center>
+  <img src="https://www.earthdatascience.org/images/earth-analytics/git-version-control/githubguides-bootcamp-fork.png" width="500" />
+</center>
 
 2. Open the ```specifications/Example.md``` file and edit it according to the syntax. You can also press ```Preview``` to inspect the rendered Markdown.
 
-<img src="https://docs.github.com/assets/cb-118903/images/help/repository/edit-file-edit-dropdown.png" width="500" />
+<center>
+  <img src="https://docs.github.com/assets/cb-118903/images/help/repository/edit-file-edit-dropdown.png" width="500" />
+</center>
 
 3. Commit changes to the ```main``` branch or create a new one from it. By creating a new branch you can safely work without affecting the original. Once your modifications are done, you can merge these into the ```main``` branch.
 
-<img src="https://docs.github.com/assets/cb-32137/images/help/repository/choose-commit-branch.png" width="500" />
+<center>
+  <img src="https://docs.github.com/assets/cb-32137/images/help/repository/choose-commit-branch.png" width="500" />
+</center>
 
-4. Watch your changes being reflected onto the API. You can also directly fetch this model using the [sdRDM](https://github.com/JR-1991/software-driven-rdm) library. For this, you can use the following example code that should run as is. 
+4. Watch your changes being reflected onto the API. You can also directly fetch this model using the [sdRDM](https://github.com/JR-1991/software-driven-rdm) library. For this, you can use the following example code that should run as is.
 
 ```python
 from sdRDM import DataModel
@@ -59,18 +72,22 @@ lib = DataModel.from_git(
 )
 
 # Visualize the data model
-lib.Root.visualize_tree()
+lib.Root.meta_tree()
 
 # Enter your data
 dataset = lib.Root(title="Some Title", description="Some Description")
-dataset.add_to_authors(name="Jan Range", affiliation="SimTech")
-dataset.add_to_parameters(key="Param", value=10.0)
+
+# There are add-functions generated with whom you are able to add
+# objects to your dataset. These functions are named after the object
+# they are adding to and are prefixed with "add_to_". The add-function
+# will return the object that was added to the dataset. You can use this
+# object to add further objects to it or manipulate it in any other way.
+
+author = dataset.add_to_authors(name="Jan Range", affiliation="SimTech")
+parameter = dataset.add_to_parameters(key="Param", value=10.0)
 
 # Inspect your dataset
 print(dataset.yaml())
-
-# Option: Link your dataset to an option --> Dataverse
-dataset.to_dataverse()
 
 # Option: Export your dataset to another format
 with open("my_dataset.json", "w") as f:

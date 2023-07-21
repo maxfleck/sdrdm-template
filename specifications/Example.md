@@ -9,9 +9,10 @@ This is an example of how to set up a data model using the Software-Driven Resea
 Data models defined in the Markdown format follow these conventions:
 
 - **Modules** are denoted by a heading level 1 ```#```
+- **Structural** headings are denoted by a heading level 2 ```##``` and can be used to structure your document &rarr GitHub supports table of contents for Markdown documents!
 - **Objects** are started with a heading level 3 ```###``` 
-- Each object contains **fields** in bold as a list &rarr; ```- __name__```
-- **Required fields** are denoted with an asterix &rarr; ```- __name*__```
+- Each object contains **fields** as a list &rarr; ```- name```
+- **Required fields** are denoted in bold &rarr; ```- __name__```
 - Each field has **options** as a list of name to value mapping &rarr; ```- Type: string```
 
 **Field options**
@@ -35,28 +36,30 @@ In the following an example data model is defined using above rules. Feel free t
 
 This is the place where you can describe the complete module/dataset and give information about all the details. Markdown offers a convenient way to enable as much space as needed to elucidate purpose and capabilities of your data model.
 
+## General
+
 ### Root
 
 This is the root of the data model and contains all objects defined in this example. While its good practice to have a single root, you can define as many roots as you like. Furthermore, the name does not have to be ```Root``` and can be any other name.
 
-- __description*__
+- __description__
   - Type: string
   - Description: Describes the content of the dataset.
   - Dataverse: pyDaRUS.Citation.description.text
-- __title*__
+- __title__
   - Type: string
   - Description: Title of the work
   - Dataverse: pyDaRUS.Citation.title
-- __subject*__
+- __subject__
   - Type: string
   - Description: Subject of matter linked to the dataset
   - Multiple: True
   - Dataverse: pyDaRUS.Citation.subject
-- __authors*__
+- __authors__
   - Type: Author
   - Multiple: True
   - Description: Authors of this dataset.
-- __parameters*__
+- __parameters__
   - Type: Parameter
   - Multiple: True
   - Description: Parameters to start and configure some process
@@ -65,11 +68,11 @@ This is the root of the data model and contains all objects defined in this exam
 
 This is another object that represents the author of the dataset. Please note, that the options here contain all required fields but also custom ones. In this example, the ```Dataverse``` option specifies where each field should be mapped, when exported to a Dataverse format. Hence, these options allow you to link your dataset towards any other data model without writing code by yourself.
 
-- __name*__
+- __name__
   - Type: string
   - Description: Full name including given and family name
   - Dataverse: pyDaRUS.Citation.author.name
-- __affiliation__
+- affiliation
   - Type: string
   - Description: To which organization the author is affiliated to
   - Dataverse: pyDaRUS.Citation.author.affiliation
@@ -78,11 +81,9 @@ This is another object that represents the author of the dataset. Please note, t
 
 This is another object used to describe the parameters of given dataset. As a final note, it is important to use the description of an object to its fullest. As you might noticed, the space in between the object definition ```###``` can be freely used to describe what this object is actually about. Ultimately, this gives you the opportunity to ensure users completely understand what the intention and use case of this object is in a readable way.
 
-- __key*__
+- __key__
   - Type: string
   - Description: Name of the parameter
-  - Dataverse: pyDaRUS.Process.method_parameters.name
-- __value*__
+- __value__
   - Type: float
   - Description: Respective value of a parameter
-  - Dataverse: pyDaRUS.Process.method_parameters.value
