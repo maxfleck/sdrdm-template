@@ -3,14 +3,14 @@
 </h2>
 
 <p align="center">
-This is an example of how to set up a data model using the Software-Driven Research Data Management (sdRDM) library which is based on abstract object models. Furthermore, the sdRDM library supports the conversion of data models defined in the Markdown format.</p>
+This is an example of how to set up a data model using the Software-Driven Research Data Management (sdRDM) library based on abstract object models. Furthermore, the sdRDM library supports the conversion of data models defined in the Markdown format.</p>
 
 ### ✍️ Syntax
 
 Data models defined in the Markdown format follow these conventions:
 
 - **Modules** are denoted by a heading level 1 ```#```
-- **Structural** headings are denoted by a heading level 2 ```##``` and can be used to structure your document &rarr GitHub supports table of contents for Markdown documents!
+- **Structural** headings are denoted by a heading level 2 ```##``` and can be used to structure your document.
 - **Objects** are started with a heading level 3 ```###```
 - Each object contains **fields** as a list &rarr; ```- name```
 - **Required fields** are denoted in bold &rarr; ```- __name__```
@@ -20,21 +20,21 @@ Data models defined in the Markdown format follow these conventions:
 
 Each field in an object can hold options relevant for mapping to another data model (e.g. a standardized format) and general information such as its type and description. In the following is a collection of all native and required fields:
 
-- **Type** - Required option to denote the data type. Please note, this can also contain other objects defined in this document.
-- **Multiple** - Whether or not this field can contain multiple values. Setting to ```True```will result in a ```List[dtype]``` annoatation in the software.
+- **Type** - Required option to denote the data type. Just so you know, this can also include other objects defined in this document.
+- **Multiple** - Whether or not this field can contain multiple values. Setting to ```True```will result in a ```List[dtype]```annotation in the software.
 - **Description** - Required option to describe the field. This should be a brief description that explains what the attribute is about.
 
 ### 🧬 Inheritance
 
-In order to inherit attributes to another object, the object definition additionally includes the name of the parent object in italic wrapped with brackets:
+To inherit attributes to another object, the object definition additionally includes the name of the parent object in italic wrapped with brackets:
 
 &rarr; ```## Child [_Parent_]```
 
-In the following an [example](https://github.com/JR-1991/sdrdm-template/tree/main/specifications) data model is defined using above rules. Feel free to use this example also as a template for your own application.
+In the following, an [example](https://github.com/JR-1991/sdrdm-template/tree/main/specifications) data model is defined using the above rules. You can also use this example as a template for your application.
 
 ### 👁 How can I use it by myself?
 
-You can experiment and use this [example](https://github.com/JR-1991/sdrdm-template/tree/main/specifications) repository right away to get familiar with teh concept. This repository includes an [action](https://github.com/JR-1991/sdrdm-template/blob/main/.github/workflows/generate_api.yaml) that is triggered whenever changes are pushed. Thus, when you introduce changes to the markdown document, these will directly be reflected onto the generated software. Follow these steps to start out:
+You can experiment and use this [example](https://github.com/JR-1991/sdrdm-template/tree/main/specifications) repository right away to get familiar with the concept. This repository includes an [action](https://github.com/JR-1991/sdrdm-template/blob/main/.github/workflows/generate_api.yaml) triggered whenever changes are pushed. Thus, when you introduce changes to the markdown document, these will be reflected directly onto the generated software. Follow these steps to start:
 
 #### 👋 One thing, before you start
 
@@ -44,7 +44,7 @@ The sdRDM library is still under active development and will be released soon. F
 python3 -m pip install git+https://github.com/JR-1991/software-driven-rdm.git@linking-refactor
 ```
 
-1. Fork this repository into your own profile. This will create an exact copy, but you have all rights to modify it without affecting the original.
+1. Fork this repository into your profile. This will create an exact copy, but you can modify it without affecting the original.
 
 <center>
   <img src="https://www.earthdatascience.org/images/earth-analytics/git-version-control/githubguides-bootcamp-fork.png" width="500" />
@@ -56,13 +56,13 @@ python3 -m pip install git+https://github.com/JR-1991/software-driven-rdm.git@li
   <img src="https://docs.github.com/assets/cb-118903/images/help/repository/edit-file-edit-dropdown.png" width="500" />
 </center>
 
-3. Commit changes to the ```main``` branch or create a new one from it. By creating a new branch you can safely work without affecting the original. Once your modifications are done, you can merge these into the ```main``` branch.
+3. Commit changes to the ```main``` branch or create a new one. By creating a new branch, you can safely work without affecting the original. Once your modifications are done, you can merge these into the ```main``` branch.
 
 <center>
   <img src="https://docs.github.com/assets/cb-32137/images/help/repository/choose-commit-branch.png" width="500" />
 </center>
 
-4. Watch your changes being reflected onto the API. You can also directly fetch this model using the [sdRDM](https://github.com/JR-1991/software-driven-rdm) library. For this, you can use the following example code that should run as is.
+4. Watch your changes being reflected in the API. You can also directly fetch this model using the [sdRDM](https://github.com/JR-1991/software-driven-rdm) library. For this, you can use the following example code that should run as is.
 
 ```python
 from sdRDM import DataModel
@@ -97,5 +97,9 @@ with open("my_dataset.json", "w") as f:
 # to re-build the software state in which the dataset was created
 
 ```
+
+### 🧃 Using the GitHub Action
+
+The workflow included in this repository synchronizes the software to the markdown document. Thus, if you extend or change your data model, it will be immediately usable. This also works for Pull Requests and other branches. So feel free to experiment around! Furthermore, the action creates a UML digram within the API `schemes` directory.
 
 *(Images were taken from GitHub's ["Editing Files" tutorial](https://docs.github.com/en/repositories/working-with-files/managing-files/editing-files))*
