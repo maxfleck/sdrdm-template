@@ -6,8 +6,8 @@ from sdRDM.base.listplus import ListPlus
 from sdRDM.base.utils import forge_signature, IDGenerator
 
 
-from .parameter import Parameter
 from .author import Author
+from .parameter import Parameter
 
 
 @forge_signature
@@ -55,7 +55,7 @@ class Root(sdRDM.DataModel):
         default="https://github.com/JR-1991/sdrdm-template.git"
     )
     __commit__: Optional[str] = PrivateAttr(
-        default="528be66682ad0634cbc9067529ecb502b5859d86"
+        default="e3cfdf12756bbf3f4f2b35e86e86606a5f95e886"
     )
 
     def add_to_authors(
