@@ -28,7 +28,7 @@ jobs:
 
       - name: Push source code
         run: |
-          git add "$LIB_NAME"
+          git add .
           git config --global user.name 'sdRDM Bot'
           git config --global user.email 'sdRDM@bot.com'
           git commit -am "API update"
