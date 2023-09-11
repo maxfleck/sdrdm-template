@@ -28,12 +28,8 @@ jobs:
 
       - name: Push source code
         run: |
-          if [ -n "$(git status --porcelain)" ]; then
-            git add "$LIB_NAME"
-            git config --global user.name 'sdRDM Bot'
-            git config --global user.email 'sdRDM@bot.com'
-            git commit -am "API update"
-            git push
-          else
-            echo "Nothing changed!"
-          fi
+          git add "$LIB_NAME"
+          git config --global user.name 'sdRDM Bot'
+          git config --global user.email 'sdRDM@bot.com'
+          git commit -am "API update"
+          git push
