@@ -1,0 +1,25 @@
+{
+  "id": "root2",
+  "description": "Thermo ML stuff...",
+  "title": "Thermo ML",
+  "authors": [
+    {
+      "id": "author2",
+      "name": "Maximilian Fleck",
+      "affiliation": "SimTech CRC1333"
+    }
+  ],
+  "parameters": [
+    {
+      "id": "parameter2",
+      "key": "Param",
+      "value": 10.0
+    }
+  ],
+  "__source__": {
+    "root": "Root",
+    "repo": "https://github.com/maxfleck/sdrdm-template.git",
+    "commit": "bd814fd6241d26d5e13618035d1317d8913d9879",
+    "url": "https://github.com/maxfleck/sdrdm-template/tree/bd814fd6241d26d5e13618035d1317d8913d9879"
+  }
+}

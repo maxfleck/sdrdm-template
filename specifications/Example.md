@@ -46,11 +46,11 @@ This is the root of the data model and contains all objects defined in this exam
   - Type: string
   - Description: Describes the content of the dataset.
   - Dataverse: pyDaRUS.Citation.description.text
-- __title__
+- __title123__
   - Type: string
   - Description: Title of the work
   - Dataverse: pyDaRUS.Citation.title
-- __subject__
+- __subject123__
   - Type: string
   - Description: Subject of matter linked to the dataset
   - Multiple: True
